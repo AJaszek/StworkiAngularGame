@@ -1,0 +1,12 @@
+<div class="inputDiv">Login</div>
+<input #loginInput type="text" placeholder=''>
+<br>
+
+<div class="inputDiv">Hasło</div>
+<input #passInput type="text" placeholder=''>
+<br>
+
+<div *ngIf="loginError" class="error">
+    Niepoprawne dane!
+</div>
+<a (click)="login()" class="buttonRouter" style="cursor:pointer;">Zaloguj</a>
