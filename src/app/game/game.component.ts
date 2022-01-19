@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiConnectorService } from '../api-connector.service';
 
 @Component({
   selector: 'app-game',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiConnectorService, public router: Router) { 
+    api.getCreatureData().subscribe(
+      (response: any) => {
+        console.log(response);
+        
+      },
+      (err: any) => console.log(err)
+    );
+  }
 
   ngOnInit(): void {
+
   }
 
 }

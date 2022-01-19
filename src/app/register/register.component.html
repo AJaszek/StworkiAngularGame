@@ -1,1 +1,20 @@
-<p>register works!</p>
+<div class="inputDiv">Login</div>
+<input #loginInput type="text" placeholder=''>
+<br>
+
+<div class="inputDiv">Hasło</div>
+<input #passInput type="text" placeholder=''>
+<br>
+
+<div class="inputDiv">Typ stworka</div>
+<input #typeInput type="text" placeholder=''>
+<br>
+
+<div class="inputDiv">Imię stworka</div>
+<input #nameInput type="text" placeholder=''>
+<br>
+
+<div *ngIf="registerError" class="error">
+    Użytkownik o takim loginie już istnieje!
+</div>
+<a (click)="register()" class="buttonRouter" style="cursor:pointer;">Zarejestruj</a>

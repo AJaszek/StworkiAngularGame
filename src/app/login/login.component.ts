@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiConnectorService } from '../api-connector.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('passInput')
   passInput!: ElementRef;
 
-  constructor() { 
+  constructor(private api: ApiConnectorService, public router: Router) {
 
   }
 
@@ -22,11 +24,26 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login(){
+  login() {
     let login = this.loginInput.nativeElement.value;
     let password = this.passInput.nativeElement.value;
-    console.log(login + ' ' + password)
-    
+    //console.log(login + ' ' + password)
+
+    this.api.login(login, password).subscribe(
+      (response: string) => {
+        //console.log(response);
+        if(response == login){
+          this.router.navigate(['/game']);
+          //console.log("response");
+        }
+        else if(response == "incorrect")
+          this.loginError=true;
+        else 
+          console.log(response);
+      },
+      (err: any) => console.log(err)
+    );
+
   }
 
 }

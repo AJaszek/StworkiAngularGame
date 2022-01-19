@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiConnectorService {
 
-  private url = "http://arlax.mygamesonline.org/"; 
+  private url = "http://arlax.mygamesonline.org/testapi.php/"; 
 
 
   constructor(private http: HttpClient) {
@@ -30,12 +30,27 @@ export class ApiConnectorService {
       body: "abc",
       userId: 1
     }
-    const headerss = new Headers();
-    headerss.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
-    //console.log(tmp);
     return this.http.post<any>(this.url + "testapi.php", tmp);
-    //return this.http.post<any>("https://jsonplaceholder.typicode.com/posts", tmp2);
   }
 
+  login(login: string, password: string) {
+    let loginData = {
+      login: login,
+      password: password
+    }
+    return this.http.post<any>(this.url + "login", loginData);
+  }
+  register(login: string, password: string, creatureType: number, creatureName: string) {
+    let registerData = {
+      login: login,
+      password: password,
+      creatureType: creatureType,
+      creatureName: creatureName
+    }
+    return this.http.post<any>(this.url + "register", registerData);
+  }
+  getCreatureData() {
+    return this.http.get(this.url + "getCreatureData");
+  }
 }
