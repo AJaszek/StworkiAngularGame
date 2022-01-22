@@ -1,0 +1,14 @@
+@import "../login/login.component";
+
+.logoutButton{
+    background-color: $beigeLight;
+    z-index: 5;
+    position:absolute;
+    right: 0%;
+    padding: 1vh;
+    border: 2px solid $beigeBorder;
+    border-top: 0px;
+    border-bottom-left-radius: 1vw;
+    box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}

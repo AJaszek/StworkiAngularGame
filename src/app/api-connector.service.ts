@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiConnectorService {
 
+
+
   private url = "http://arlax.mygamesonline.org/testapi.php/"; 
 
 
@@ -52,5 +54,14 @@ export class ApiConnectorService {
   }
   getCreatureData() {
     return this.http.get(this.url + "getCreatureData");
+  }
+  getAllCreatures() {
+    return this.http.get(this.url + "getAllCreatures");
+  }
+  checkSession() {
+    return this.http.get(this.url + "sessionCheck");
+  }
+  logout() {
+    return this.http.get(this.url + "logout");
   }
 }

@@ -1,0 +1,60 @@
+@import "../login/login.component";
+
+.form {
+    margin-top: 6vh;
+
+    p {
+        padding: 2vh;
+    }
+}
+.creatureChoose {
+    //background-color: red;
+    width: 40vh;
+    margin: auto;
+    margin-bottom: 1vh;
+}
+.checkmark {
+    background: $beigeInput;
+    color: $beigeText;
+    border: 1px solid $beigeBorder;
+    width: 48%;
+    margin: 1%;
+    box-sizing: border-box;
+    display: inline-block;
+    box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    .tooltiptext {
+        //display: none;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        background-color: $beigeInput;
+        color: $beigeText;
+        padding: 1vh;
+        border: 1px solid $beigeBorder;
+        box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+}
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+input[type="radio"]:checked {
+    + .checkmark {
+        background: $beigeLight;
+        //color: $beigeText;
+        //border: 1px solid $beigeBorder;
+        transform: translateY(2px);
+    }
+}
+.checkmark:hover {
+    .tooltiptext {
+        //display: inline;
+        visibility: visible;
+        opacity: 1;
+    }
+}

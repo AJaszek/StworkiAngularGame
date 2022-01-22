@@ -1,20 +1,44 @@
-<div class="inputDiv">Login</div>
-<input #loginInput type="text" placeholder=''>
-<br>
+<div class="form">
+    <p>Zarejestruj się</p>
+    <div class="inputDiv">
+        <input #loginInput type="text" placeholder='Login'>
+    </div>
 
-<div class="inputDiv">Hasło</div>
-<input #passInput type="text" placeholder=''>
-<br>
+    <div class="inputDiv">
+        <input #passInput type="text" placeholder='Hasło'>
+    </div>
 
-<div class="inputDiv">Typ stworka</div>
-<input #typeInput type="text" placeholder=''>
-<br>
+    <div class="creatureChoose">
+        Wybierz stworka:
+        <br>
+        <label *ngFor="let creature of creatures">
+            <input type="radio" name="creatureType" value="{{creature.type}}" [(ngModel)]="chosenType">
+            <div class="checkmark">
+                {{creature.type}} - {{creature.kind}}
+                <span class="tooltiptext">{{creature.description}}</span>
+            </div>
 
-<div class="inputDiv">Imię stworka</div>
-<input #nameInput type="text" placeholder=''>
-<br>
+        </label>
 
-<div *ngIf="registerError" class="error">
-    Użytkownik o takim loginie już istnieje!
+
+    </div>
+
+    <div class="inputDiv">
+        <input #nameInput type="text" placeholder='Imię stworka'>
+    </div>
+    <div *ngIf="creatureTypeError" class="error">
+        Stworek takiego typu nie istnieje!
+    </div>
+    <div *ngIf="registerError" class="error">
+        Użytkownik o takim loginie już istnieje!
+    </div>
+    <div *ngIf="emptyFields" class="error">
+        Uzupełnij brakujące informacje!
+    </div>
+    <div *ngIf="registerSucceed" class="success">
+        Rejestracja się powiodła,<br> kliknij przycisk "Powrót", aby się zalogować!
+    </div>
+    <a (click)="register()" class="buttonRouter" style="cursor:pointer;">Zarejestruj</a>
+    <br>
+    <a routerLink="/login" routerLinkActive="active" class="buttonRouter">Powrót</a>
 </div>
-<a (click)="register()" class="buttonRouter" style="cursor:pointer;">Zarejestruj</a>

@@ -1,0 +1,34 @@
+@import "../../colors";
+
+.form {
+    vertical-align: middle;
+    background-color: $beigeInput;
+    width: 50%;
+    min-height: 60vh;
+    margin: auto;
+    margin-top: 10vh;
+    padding: 5vh;
+    text-align: center;
+    box-shadow: 19px 19px 42px -19px rgba(0, 0, 0, 0.5), -19px -19px 42px -19px $beigeLightShadow;
+    
+    border-radius: 10px;
+
+    input {
+        background-color: $beigeInput;
+    }
+    p {
+        padding: 4vh;
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .inputDiv{
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .form{
+        width:100%;
+        padding: 4vh 0vh;
+    }
+}

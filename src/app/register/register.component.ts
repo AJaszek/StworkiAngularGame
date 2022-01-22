@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiConnectorService } from '../api-connector.service';
+import { Creature } from '../creature';
+
 
 @Component({
   selector: 'app-register',
@@ -9,37 +11,71 @@ import { ApiConnectorService } from '../api-connector.service';
 })
 export class RegisterComponent implements OnInit {
 
+  creatures: Creature[] = [];
+
+  chosenType = -1;
+
   registerError = false;
   creatureTypeError = false;
+  registerSucceed = false;
+  emptyFields = false;
 
   @ViewChild('loginInput')
   loginInput!: ElementRef;
   @ViewChild('passInput')
   passInput!: ElementRef;
-  @ViewChild('typeInput')
-  typeInput!: ElementRef;
   @ViewChild('nameInput')
   nameInput!: ElementRef;
+  
 
 
-  constructor(private api: ApiConnectorService, public router: Router) { }
+
+  constructor(private api: ApiConnectorService, public router: Router) {
+    this.getCreatures();
+  }
 
   ngOnInit(): void {
   }
 
+  getCreatures() {
+    this.api.getAllCreatures().subscribe(
+      (response: any) => {
+        response.forEach((element: Creature) => {
+
+          this.creatures.push(element);
+        });
+      },
+      (err: any) => console.log(err)
+    );
+
+  }
+
   register() {
+    let canRegister = true;
+
+    this.emptyFields = false;
+    this.registerError = false;
+    this.creatureTypeError = false;
+    this.registerSucceed = false;
+
     let login = this.loginInput.nativeElement.value;
     let password = this.passInput.nativeElement.value;
-    let type: number = this.typeInput.nativeElement.value;
     let name = this.nameInput.nativeElement.value;
-    //console.log(login + ' ' + password)
-    if (type > 0 && type <= 2) {
-      this.api.register(login, password, type, name).subscribe(
+
+    if (login == "" || password == "" || name == ""){
+      canRegister = false;
+      this.emptyFields = true;
+    }
+    if (this.chosenType > this.creatures.length && this.chosenType < 1) {
+      canRegister = false;
+      this.creatureTypeError = true;
+    }
+    if (canRegister) {
+
+      this.api.register(login, password, this.chosenType, name).subscribe(
         (response: string) => {
-          //console.log(response);
           if (response == "succeed") {
-            this.router.navigate(['/login']);
-            //console.log("response");
+            this.registerSucceed = true;
           }
           else if (response == "userExist")
             this.registerError = true;
@@ -49,9 +85,7 @@ export class RegisterComponent implements OnInit {
         (err: any) => console.log(err)
       );
     }
-    else{
-      this.creatureTypeError = true;
-    }
   }
+
 
 }

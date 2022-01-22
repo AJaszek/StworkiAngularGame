@@ -7,38 +7,32 @@ import { ApiConnectorService } from './api-connector.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Stworki';
 
-  sessionUser = null;
+  //loggedUser = false;
 
-  constructor(private api: ApiConnectorService, public router: Router) { 
-    if (this.sessionUser != null)
-      this.router.navigate(['/game']);
-    else
-      this.router.navigate(['/login']);
-  }
+  constructor(private api: ApiConnectorService, public router: Router) { }
 
   ngOnInit(): void {
-    /*this.api.addOrderId("abcd").subscribe(
+    //this.router.navigate(['/game']);
+    this.api.checkSession().subscribe(
       (response: any) => {
-        console.log(response);
-        this.api.getData().subscribe(
-          (response2: any) => {
-          // do it here
-          console.log(response2);
-         },
-          (err2) => console.log(err2)
-          );
-     
-     },
+        if (response == "logged") {
+         // this.loggedUser = true;
+          this.router.navigate(['/game']);
+        }
+        else{
+         // this.loggedUser = false;
+          this.router.navigate(['/login']);
+        }
+      },
       (err) => console.log(err)
-      );
- ;
-    
-*/
-     
+    );
+
+
   }
+
 
 
 

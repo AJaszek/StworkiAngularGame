@@ -10,17 +10,30 @@ import { ApiConnectorService } from '../api-connector.service';
 export class GameComponent implements OnInit {
 
   constructor(private api: ApiConnectorService, public router: Router) { 
-    api.getCreatureData().subscribe(
+    
+    /*api.getCreatureData().subscribe(
       (response: any) => {
         console.log(response);
         
       },
       (err: any) => console.log(err)
-    );
+    );*/
   }
 
   ngOnInit(): void {
 
+  }
+
+
+  logout() {
+    this.api.logout().subscribe(
+      (response: any) => {
+        //console.log(response);
+        this.router.navigate(['/login']);
+      },
+      (err: any) => console.log(err)
+      );
+    
   }
 
 }

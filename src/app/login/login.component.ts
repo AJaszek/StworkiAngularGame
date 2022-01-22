@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       (response: string) => {
         //console.log(response);
         if(response == login){
+          
           this.router.navigate(['/game']);
           //console.log("response");
         }
