@@ -10,8 +10,6 @@ import { ApiConnectorService } from './api-connector.service';
 export class AppComponent implements OnInit {
   title = 'Stworki';
 
-  //loggedUser = false;
-
   constructor(private api: ApiConnectorService, public router: Router) { }
 
   ngOnInit(): void {
@@ -19,11 +17,9 @@ export class AppComponent implements OnInit {
     this.api.checkSession().subscribe(
       (response: any) => {
         if (response == "logged") {
-         // this.loggedUser = true;
           this.router.navigate(['/game']);
         }
         else{
-         // this.loggedUser = false;
           this.router.navigate(['/login']);
         }
       },

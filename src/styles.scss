@@ -16,7 +16,7 @@ body {
 a{
     text-decoration: none;
 }
-input[type=text] {
+input[type=text], input[type=password] {
     font-size: medium;
     margin: 4px;
     background: $beigeLight;
