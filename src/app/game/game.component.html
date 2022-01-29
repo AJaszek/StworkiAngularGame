@@ -12,7 +12,9 @@
         Wyloguj
     </div>
 </div>
+
 <div class="gameWindow">
+    <div class="creatureInfo">{{creature.getName()}} - {{creature.getLevel()}} poziom</div>
     <div class="creature">
         
         <div class="creatureEye">
@@ -26,4 +28,10 @@
         </div>
     </div>
 
+    <div class="interractionBar">
+        <div class="lamp" (click)="changeLampeState()"></div>
+
+    </div>
+
+    <div class="sleepTime"></div>
 </div>

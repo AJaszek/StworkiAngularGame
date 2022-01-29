@@ -40,9 +40,13 @@ export class RegisterComponent implements OnInit {
   getCreatures() {
     this.api.getAllCreatures().subscribe(
       (response: any) => {
-        response.forEach((element: Creature) => {
+        response.forEach((element: any) => {
 
-          this.creatures.push(element);
+          this.creatures.push(new Creature(
+            element.type,
+            element.kind,
+            element.description
+          ));
         });
       },
       (err: any) => console.log(err)

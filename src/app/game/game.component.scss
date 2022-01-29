@@ -1,12 +1,12 @@
 @import "../login/login.component";
 
-.logoutButton{
+.logoutButton {
     background-color: $beigeLight;
     z-index: 5;
     float: right;
     //position: relative;
-   // top:100%;
-   // right: 0%;
+    // top:100%;
+    // right: 0%;
 
     padding: 1vh;
     height: 6vh;
@@ -17,19 +17,18 @@
     margin-right: -2px;
     //box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    
 }
-.notificationBar{
+.notificationBar {
     border: 2px solid $beigeBorder;
     height: 6vh;
     text-align: center;
     //padding: 1vh;
 }
-.notificationBar > div{
+.notificationBar > div {
     box-sizing: border-box;
     display: inline-block;
 }
-.barBorder{
+.barBorder {
     width: 25vw;
     height: 70%;
     margin: 1vh;
@@ -37,36 +36,37 @@
     border-radius: 1vh;
     overflow: hidden;
 }
-.bar{
+.bar {
     //position: absolute;
 
     width: 30%;
     height: 100%;
 }
-#healthBar{
+#healthBar {
     background-color: #ff6e6e;
-    
 }
-#hungryBar{
+#hungryBar {
     background-color: #73ff73;
 }
-#tirednessBar{
+#tirednessBar {
     background-color: #858dff;
 }
-.gameWindow{
+.gameWindow {
     text-align: center;
 }
-.creature{
+.creature {
     background-color: rgb(117, 88, 45);
     display: inline-block;
-    min-width: 100px;
-    min-height: 100px;
-    width: 25em;
-    height: 25em;
+    //min-width: 100px;
+    //min-height: 100px;
+    width: 45vh;
+    //width: 25em;
+    //height: 25em;
+    height: 60vh;
     margin: auto;
     clip-path: polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%);
 }
-.creatureEye{
+.creatureEye {
     background-color: rgb(255, 255, 255);
     display: inline-block;
     width: 10%;
@@ -74,23 +74,24 @@
     //margin: auto;
     margin: 0.5vh;
     position: relative;
-    top: 6em;
+    top: 13vh;
     z-index: 2;
     border-radius: 50%;
-   // transform: translateX(4em);
-   // transform: translateY(2em);
+    overflow: hidden;
+    //transform: translateX(-6vh);
+    //transform: translateY(-5vh);
 }
-.pupil{
+.pupil {
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
     display: inline-block;
     width: 40%;
     height: 40%;
     margin-top: 30%;
-   // transform: translateY(-0.8em);
+    margin-bottom: 30%;
+    // transform: translateY(-0.8em);
 }
-.creatureMouth{
- 
+.creatureMouth {
     background-color: rgb(0, 0, 0);
     display: block;
     width: 30%;
@@ -100,9 +101,8 @@
     position: relative;
     top: 25%;
     border-radius: 50%;
-    
 }
-.upperLip{
+.upperLip {
     background-color: rgb(117, 88, 45);
     display: block;
     width: 100%;
@@ -114,41 +114,73 @@
     //transform: translateX(4em);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*.creature{
-    background-color: red;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    margin: auto;
+.interractionBar {
+    //border: 1px solid $beigeBorder;
+    border-radius: 1vw;
+    background-color: $beigeLight;
+    box-sizing: border-box;
+    height: 10vh;
+    width: 80vw;
+    margin: 10vw 0 3vw 10vw;
+    position: fixed;
+    bottom: 0%;
+    z-index: 2;
+    box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.5), -3px -3px 5px -2px rgba(255, 255, 255, 0.5);
 }
-.creature::after{
+.lamp::before {
     content: "";
-    display: inline-block;
-    background-color: royalblue;
-    width: 100px;
-    height: 100px;
     position: relative;
-    top: 100px;
+    background-color: rgb(1, 18, 255);
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    //left: 25%;
+    display: inline-block;
+    border-radius: 18% 18% 18% 18% / 50% 50% 50% 50%;
+    box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.5);
 }
-.creature::before{
-    content: "";
+.lamp {
+    background-color: rgba(238, 255, 0, 0);
+    border-radius: 50% 50% 50% 50% / 100% 100% 0% 0% ;
+    width: 9vh;
+    height: 8vh;
     display: inline-block;
-    background-color: greenyellow;
-    width: 100px;
-    height: 100px;
+    margin-left: 1vw;
+}
+.lamp::after {
+    content: "";
     position: relative;
-    top: 100px;
-}*/
+    background-color: rgb(255, 30, 0);
+    width: 100%;
+    display: inline-block;
+    border-radius: 30% 30% 10% 10% / 78% 78% 10% 10%;
+    height: 60%;
+    top: -70%;
+    box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.5);
+}
+.sleepTime {
+    opacity: 0%;
+    pointer-events: none;
+    position: fixed;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.568);
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}
+@keyframes closeEyes { 
+    0% {height: 10%;}
+    100% { height: 0.4%; } 
+}
+@keyframes openEyes { 
+    0% {height: 0.4%;}
+    100% { height: 10%; } 
+}
+@keyframes darkenWindow { 
+    0% {opacity: 0%;}
+    100% { opacity: 100%; } 
+}
+@keyframes lightenWindow { 
+    0% {opacity: 100%;}
+    100% { opacity: 0%; } 
+}

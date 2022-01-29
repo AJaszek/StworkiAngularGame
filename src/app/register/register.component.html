@@ -5,17 +5,17 @@
     </div>
 
     <div class="inputDiv">
-        <input #passInput type="text" placeholder='Hasło'>
+        <input #passInput type="password" placeholder='Hasło'>
     </div>
 
     <div class="creatureChoose">
         Wybierz stworka:
         <br>
         <label *ngFor="let creature of creatures">
-            <input type="radio" name="creatureType" value="{{creature.type}}" [(ngModel)]="chosenType">
+            <input type="radio" name="creatureType" value="{{creature.getType()}}" [(ngModel)]="chosenType">
             <div class="checkmark">
-                {{creature.type}} - {{creature.kind}}
-                <span class="tooltiptext">{{creature.description}}</span>
+                {{creature.getType()}} - {{creature.getKind()}}
+                <span class="tooltiptext">{{creature.getDescription()}}</span>
             </div>
 
         </label>
