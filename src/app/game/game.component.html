@@ -1,12 +1,12 @@
 <div class="notificationBar">
     <div class="barBorder">
-        <div class="bar" id="healthBar"></div>
+        <div class="bar" id="healthBar"><span class="tooltiptext">{{creature.getHealth()}}%</span></div>
     </div>
     <div class="barBorder">
-        <div class="bar" id="hungryBar"></div>
+        <div class="bar" id="hungryBar"><span class="tooltiptext">{{creature.getHunger()}}%</span></div>
     </div>
     <div class="barBorder">
-        <div class="bar" id="tirednessBar"></div>
+        <div class="bar" id="tirednessBar"><span class="tooltiptext">{{creature.getTiredness()}}%</span></div>
     </div>
     <div class="logoutButton" (click)="logout()">
         Wyloguj

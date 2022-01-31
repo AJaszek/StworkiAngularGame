@@ -9,14 +9,15 @@ export class ApiConnectorService {
 
 
 
-  private url = "http://arlax.mygamesonline.org/testapi.php/"; 
+
+  private url = "http://arlax.mygamesonline.org/testapi.php/";
 
 
   constructor(private http: HttpClient) {
     //this.getData();
-   }
+  }
 
-  getData() : Observable<any> {
+  getData(): Observable<any> {
     return this.http.get(this.url + "testapi2.php");
     //return this.http.get("https://catfact.ninja/fact");
     //console.log(data);
@@ -63,5 +64,20 @@ export class ApiConnectorService {
   }
   logout() {
     return this.http.get(this.url + "logout");
+  }
+  changeSleep(state: boolean) {
+
+    let tmp;
+    if (state) {
+      tmp = {
+        sleep: 1
+      }
+    }
+    else {
+      tmp = {
+        sleep: 0
+      }
+    }
+    return this.http.post<any>(this.url + "changeSleep", tmp);
   }
 }
