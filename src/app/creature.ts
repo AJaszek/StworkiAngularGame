@@ -1,4 +1,5 @@
 export class Creature {
+
     private type: number;
     private kind: string;
     private description: string;
@@ -8,6 +9,7 @@ export class Creature {
     private hunger: number;
     private tiredness: number;
     private sleep: boolean;
+    private appearance: string;
 
     constructor(
         type: number,
@@ -20,7 +22,7 @@ export class Creature {
         tiredness: number = 0,
         sleep: boolean = false) {
 
-        this.type = type;
+        this.type = type*1;
         this.kind = kind;
         this.description = description;
         this.name = name;
@@ -29,19 +31,22 @@ export class Creature {
         this.hunger = hunger;
         this.tiredness = tiredness;
         this.sleep = sleep;
+        this.appearance = this.setAppearance(type);
     }
 
     setSleep(sleep: boolean, animation: boolean) {
         this.sleep = sleep;
         if (sleep) {
             if (animation) {
-                (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
-                (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
+                for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
+                //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
                 (document.querySelector('.sleepTime') as HTMLElement).style.animation = "darkenWindow 2s linear forwards";
             }
             else {
-                (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.height = "0.4%";
-                (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "0.4%";
+                for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "0.4%";
+                //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "0.4%";
                 (document.querySelector('.sleepTime') as HTMLElement).style.opacity = "100%";
             }
             (document.querySelector('.lamp') as HTMLElement).style.backgroundColor = "rgb(238, 255, 0)";
@@ -49,16 +54,17 @@ export class Creature {
         }
         else {
             if (animation) {
-
-                (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.animation = "openEyes 1s linear forwards";
-                (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "openEyes 1s linear forwards";
+                for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "openEyes 1s linear forwards";
+                //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "openEyes 1s linear forwards";
 
 
                 (document.querySelector('.sleepTime') as HTMLElement).style.animation = "lightenWindow 2s linear forwards";
 
             } else {
-                (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.height = "10%";
-                (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "10%";
+                for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "10%";
+                //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "10%";
                 (document.querySelector('.sleepTime') as HTMLElement).style.opacity = "0%";
             }
             window.addEventListener("touchmove", this.process_touchmove, false);
@@ -76,11 +82,12 @@ export class Creature {
         else if (posX < -6) posX = -6;
         if (posY > 5) posY = 5;
         else if (posY < -5) posY = -5;
-        (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
-        (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
-
-        (document.querySelectorAll('.pupil')[0] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
-        (document.querySelectorAll('.pupil')[1] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
+        for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+        (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
+        //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
+        for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+        (document.querySelectorAll('.pupil')[i] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
+        //(document.querySelectorAll('.pupil')[1] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
 
         (document.querySelector('.creatureMouth') as HTMLElement).style.transform = "translate(" + posX / 2 + "vh," + posY / 2 + "vh)";
 
@@ -98,11 +105,13 @@ export class Creature {
         else if (posX < -6) posX = -6;
         if (posY > 5) posY = 5;
         else if (posY < -5) posY = -5;
-        (document.querySelectorAll('.creatureEye')[0] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
-        (document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
 
-        (document.querySelectorAll('.pupil')[0] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
-        (document.querySelectorAll('.pupil')[1] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
+        for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
+            (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
+        //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
+        for (let i = 0; i < document.querySelectorAll('.pupil').length; i++)
+            (document.querySelectorAll('.pupil')[i] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
+        //(document.querySelectorAll('.pupil')[1] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
 
         (document.querySelector('.creatureMouth') as HTMLElement).style.transform = "translate(" + posX / 2 + "vh," + posY / 2 + "vh)";
 
@@ -110,22 +119,66 @@ export class Creature {
     }
 
 
+    private setAppearance(type: number): string {
+
+        switch (type) {
+            case 1:
+                return "polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%)";
+            case 2:
+                return "polygon(50% 1%, 79% 7%, 90% 31%, 92% 66%, 82% 99%, 51% 84%, 22% 98%, 12% 65%, 10% 33%, 20% 6%)";
+            case 3:
+                return "polygon(30% 0%, 70% 0%, 100% 30%, 78% 30%, 80% 100%, 0 100%, 3% 59%, 18% 33%)";
+            case 4:
+                return "polygon(36% 30%, 68% 32%, 84% 0, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 18% 0)";
+        }
+        return "polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%)";
+
+    }
+
+    draw(creatureDiv: HTMLElement) {
+        switch (this.getType()) {
+            case 1:
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
+                creatureDiv.style.clipPath = this.setAppearance(this.getType());
+                break;
+            case 2:
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
+                creatureDiv.style.clipPath = this.setAppearance(this.getType());
+                break;
+            case 3:
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+               // creatureDiv.innerHTML += "  <div class='creatureEye'><div class='pupil'></div></div>";
+                creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
+                creatureDiv.style.clipPath = this.setAppearance(this.getType());
+                for (let i = 0; i < creatureDiv.getElementsByTagName('div').length; i++)
+                creatureDiv.getElementsByTagName('div')[i].style.top="5%";
+                break;
+            case 4:
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
+                creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
+                creatureDiv.style.clipPath = this.setAppearance(this.getType());
+                for (let i = 0; i < creatureDiv.getElementsByTagName('div').length; i++)
+                creatureDiv.getElementsByTagName('div')[i].style.top="40%";
+
+                break;
+        }
+       // return "polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%)";
+
+
+    }
 
 
 
 
-
-
-
-
-
-
-
-
-
-    /*public setSleep(sleep:boolean){
-        this.sleep=sleep;
-    }*/
+    public getAppearance() {
+        return this.appearance;
+    }
     public getSleep() {
         return this.sleep;
     }
