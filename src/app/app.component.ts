@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private api: ApiConnectorService, public router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/game']);
-    /*this.api.checkSession().subscribe(
+    //this.router.navigate(['/game']);
+    this.api.checkSession().subscribe(
       (response: any) => {
         if (response == "logged") {
           this.router.navigate(['/game']);
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
         }
       },
       (err) => console.log(err)
-    );*/
+    );
 
 
   }

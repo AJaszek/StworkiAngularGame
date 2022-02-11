@@ -1,0 +1,173 @@
+@import "../login/login.component";
+.foodItem {
+    display: inline-block;
+    width: 15.5vh;
+    height: 15.5vh;
+    //border: 1px solid $beigeBorder;
+    box-sizing: border-box;
+    border-radius: 1vh;
+    margin: 1vw;
+    p {
+        margin: 0;
+    }
+    div {
+        margin: auto;
+    }
+    // width: 20%;
+    // height: 0;
+    // padding-bottom: 20%;
+}
+.clickedFoodItem {
+    display: none;
+    position: fixed;
+    width: 15.5vh;
+    height: 15.5vh;
+    //border: 1px solid $beigeBorder;
+    z-index: 4;
+    top: -5%;
+    left: -5%;
+}
+.fBanana {
+    //background-color: yellow;
+    width: 70%;
+    height: 80%;
+    // margin: auto;
+    border-radius: 50%;
+    //top: 0%;
+    overflow: hidden;
+    &:before {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: rgba(69, 197, 69, 0);
+        width: 70%;
+        height: 100%;
+        //top:5%;
+        left: -12%;
+        border-radius: 50%;
+        box-shadow: 0px 0px 0px 20px yellow;
+    }
+    &:after {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: black;
+        width: 10%;
+        height: 10%;
+        left: -41%;
+        top: 2%;
+        border-radius: 55% 45% 43% 57% / 40% 48% 52% 60%;
+    }
+}
+.fStrawberry {
+    background-color: red;
+    //margin: auto;
+    width: 60%;
+    height: 70%;
+    border-radius: 54% 46% 55% 45% / 28% 30% 70% 72%;
+    &:before {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: green;
+        width: 20%;
+        height: 20%;
+        top: -20%;
+        border-radius: 1% 99% 10% 90% / 5% 94% 6% 95%;
+    }
+    &:after {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: green;
+        width: 20%;
+        height: 20%;
+        top: -20%;
+        border-radius: 91% 9% 93% 7% / 89% 6% 94% 11%;
+    }
+}
+.fAngel {
+    background-color: rgb(228, 193, 127);
+    width: 40%;
+    height: 100%;
+    border-radius: 50% 50% 10% 10% / 40% 40% 0% 0%;
+    &:before {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: rgb(207, 175, 115);
+        width: 80%;
+        height: 30%;
+        top: 70%;
+        left: -70%;
+        border-radius: 50% 50% 10% 10% / 60% 60% 0% 0%;
+    }
+    &:after {
+        content: "";
+        position: relative;
+        display: inline-block;
+        background-color: rgb(207, 175, 115);
+        width: 80%;
+        height: 30%;
+        top: 32%;
+        left: 70%;
+        border-radius: 50% 50% 10% 10% / 60% 60% 0% 0%;
+    }
+}
+.fChocolate {
+    width: 70%;
+    height: 70%;
+    background-color: rgb(145, 69, 18);
+    border: 1vh solid rgb(88, 45, 16);
+    &:before {
+        content: "";
+        width: 100%;
+        height: 30%;
+        top: 25%;
+        position: relative;
+        display: inline-block;
+        //background-color: rgb(145, 69, 18);
+        border-top: 1vh solid rgb(88, 45, 16);
+        border-bottom: 1vh solid rgb(88, 45, 16);
+    }
+    &:after {
+        content: "";
+        width: 30%;
+        height: 100%;
+        display: inline-block;
+        top: -57%;
+        position: relative;
+        //background-color: rgb(145, 69, 18);
+        border-left: 1vh solid rgb(88, 45, 16);
+        border-right: 1vh solid rgb(88, 45, 16);
+    }
+}
+
+.fCookie {
+    width: 70%;
+    height: 50%;
+    background-color: rgb(199, 134, 91);
+    border-radius: 50%;
+    //border: 1vh solid rgb(88, 45, 16);
+    &:before {
+        content: "";
+        width: 15%;
+        height: 15%;
+        background-color: rgb(82, 42, 23);
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        left: 20%;
+    }
+    &:after {
+        content: "";
+        width: 15%;
+        height: 15%;
+        background-color: rgb(82, 42, 23);
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        left: -20%;
+        top: 35%;
+    }
+}

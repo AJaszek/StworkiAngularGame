@@ -22,7 +22,7 @@ export class Creature {
         tiredness: number = 0,
         sleep: boolean = false) {
 
-        this.type = type*1;
+        this.type = type * 1;
         this.kind = kind;
         this.description = description;
         this.name = name;
@@ -39,13 +39,13 @@ export class Creature {
         if (sleep) {
             if (animation) {
                 for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
+                    (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
                 //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "closeEyes 1s linear forwards";
                 (document.querySelector('.sleepTime') as HTMLElement).style.animation = "darkenWindow 2s linear forwards";
             }
             else {
                 for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "0.4%";
+                    (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "0.4%";
                 //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "0.4%";
                 (document.querySelector('.sleepTime') as HTMLElement).style.opacity = "100%";
             }
@@ -55,7 +55,7 @@ export class Creature {
         else {
             if (animation) {
                 for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "openEyes 1s linear forwards";
+                    (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.animation = "openEyes 1s linear forwards";
                 //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.animation = "openEyes 1s linear forwards";
 
 
@@ -63,7 +63,7 @@ export class Creature {
 
             } else {
                 for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-                (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "10%";
+                    (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.height = "10%";
                 //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.height = "10%";
                 (document.querySelector('.sleepTime') as HTMLElement).style.opacity = "0%";
             }
@@ -83,10 +83,10 @@ export class Creature {
         if (posY > 5) posY = 5;
         else if (posY < -5) posY = -5;
         for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-        (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
+            (document.querySelectorAll('.creatureEye')[i] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
         //(document.querySelectorAll('.creatureEye')[1] as HTMLElement).style.transform = "translate(" + posX + "vh," + posY + "vh)";
         for (let i = 0; i < document.querySelectorAll('.creatureEye').length; i++)
-        (document.querySelectorAll('.pupil')[i] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
+            (document.querySelectorAll('.pupil')[i] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
         //(document.querySelectorAll('.pupil')[1] as HTMLElement).style.transform = "translate(" + posX / 6 + "vh," + posY / 3 + "vh)";
 
         (document.querySelector('.creatureMouth') as HTMLElement).style.transform = "translate(" + posX / 2 + "vh," + posY / 2 + "vh)";
@@ -151,11 +151,11 @@ export class Creature {
                 break;
             case 3:
                 creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
-               // creatureDiv.innerHTML += "  <div class='creatureEye'><div class='pupil'></div></div>";
+                // creatureDiv.innerHTML += "  <div class='creatureEye'><div class='pupil'></div></div>";
                 creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
                 creatureDiv.style.clipPath = this.setAppearance(this.getType());
                 for (let i = 0; i < creatureDiv.getElementsByTagName('div').length; i++)
-                creatureDiv.getElementsByTagName('div')[i].style.top="5%";
+                    creatureDiv.getElementsByTagName('div')[i].style.top = "5%";
                 break;
             case 4:
                 creatureDiv.innerHTML += "  <div class='creatureEye'><span class='pupil'></span></div>";
@@ -164,11 +164,11 @@ export class Creature {
                 creatureDiv.innerHTML += "  <div class='creatureMouth'><span class='upperLip'></span></div>";
                 creatureDiv.style.clipPath = this.setAppearance(this.getType());
                 for (let i = 0; i < creatureDiv.getElementsByTagName('div').length; i++)
-                creatureDiv.getElementsByTagName('div')[i].style.top="40%";
+                    creatureDiv.getElementsByTagName('div')[i].style.top = "40%";
 
                 break;
         }
-       // return "polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%)";
+        // return "polygon(20% 100%, 20% 41%, 23% 22%, 33% 8%, 50% 3%, 66% 8%, 76% 22%, 80% 41%, 80% 100%)";
 
 
     }
@@ -217,6 +217,11 @@ export class Creature {
     public setHealth(health: number): void {
         this.health = health;
     }
+    public addHealth(health: number): void {
+        this.health = Number(this.health) + Number(health);
+        if (this.health > 100)
+            this.health = 100;
+    }
 
     public getHunger(): number {
         return this.hunger;
@@ -225,13 +230,22 @@ export class Creature {
     public setHunger(hunger: number): void {
         this.hunger = hunger;
     }
-
+    public addHunger(hunger: number): void {
+        this.hunger = Number(this.hunger) + Number(hunger);
+        if (this.hunger > 100)
+            this.hunger = 100;
+    }
     public getTiredness(): number {
         return this.tiredness;
     }
 
     public setTiredness(tiredness: number): void {
         this.tiredness = tiredness;
+    }
+    public addTiredness(tiredness: number): void {
+        this.tiredness = Number(this.tiredness) + Number(tiredness);
+        if (this.tiredness > 100)
+            this.tiredness = 100;
     }
 
 }

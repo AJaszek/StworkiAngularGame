@@ -10,7 +10,8 @@ export class ApiConnectorService {
 
 
 
-  private url = "http://arlax.mygamesonline.org/testapi.php/";
+
+  private url = "http://arlax.mygamesonline.org/testapi2.php/";
 
 
   constructor(private http: HttpClient) {
@@ -79,5 +80,11 @@ export class ApiConnectorService {
       }
     }
     return this.http.post<any>(this.url + "changeSleep", tmp);
+  }
+  creatureEat(type: number) {
+    let tmp = {
+      type: type
+    }
+    return this.http.post<any>(this.url + "eat", tmp);
   }
 }

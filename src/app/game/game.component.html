@@ -24,13 +24,14 @@
         <div class="lamp" (click)="changeLampeState()"></div>
         <div class="fridge" (click)="openFridge()">
             <div class="fridgeContent">
-                <div *ngFor="let food of foods" class="foodItem" (mousedown)="clickedFood(food)" >{{food.getName()}}
-
+                <div *ngFor="let food of foods" class="foodItem" (mousedown)="clickedFood(food)" >
+                    <div [ngClass]="food.getCssClassName()"></div>
+                    <p>{{food.getName()}}</p>
                 </div>
                 
             </div>
         </div>
     </div>
-    <div class="clickedFoodItem" (mouseup)="releasedFood()">Jedzonko</div>
+    <div class="clickedFoodItem" (mouseup)="releasedFood()"></div>
     <div class="sleepTime"></div>
 </div>
