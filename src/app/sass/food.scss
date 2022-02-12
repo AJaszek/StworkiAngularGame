@@ -9,6 +9,7 @@
     margin: 1vw;
     p {
         margin: 0;
+        
     }
     div {
         margin: auto;
@@ -19,13 +20,13 @@
 }
 .clickedFoodItem {
     display: none;
-    position: fixed;
+    position: absolute;
     width: 15.5vh;
     height: 15.5vh;
     //border: 1px solid $beigeBorder;
     z-index: 4;
     top: -5%;
-    left: -5%;
+    left: -1%;
 }
 .fBanana {
     //background-color: yellow;
@@ -169,5 +170,36 @@
         display: inline-block;
         left: -20%;
         top: 35%;
+    }
+}
+.healPotion{
+    width: 50%;
+    height: 40%;
+    top: 5%;
+    position: relative;
+    background-color: rgb(219, 219, 219);
+    border-radius: 50%;
+    //border: 1vh solid rgb(88, 45, 16);
+    &:before {
+        content: "";
+        width: 30%;
+        height: 70%;
+        background-color: rgb(219, 219, 219);
+        border-radius: 25%  ;
+        position: relative;
+        display: inline-block;
+        top: -60%;
+
+        
+    }
+    &:after {
+        content: "";
+        width: 80%;
+        height: 45%;
+        background-color: red;
+        border-radius: 52% 48% 50% 50% / 0% 0% 100% 100% ;
+        position: relative;
+        display: inline-block;
+        top: -45%;
     }
 }

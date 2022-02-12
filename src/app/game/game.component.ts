@@ -1,3 +1,4 @@
+import { NONE_TYPE } from '@angular/compiler';
 import { Component, ElementRef, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiConnectorService } from '../api-connector.service';
@@ -18,17 +19,17 @@ export class GameComponent implements OnInit {
 
 
   constructor(private api: ApiConnectorService, public router: Router, private elementRef: ElementRef) {
-    /*
-        this.foods.push(new Food(1, "Banan", "foodBanana", 10));
-        this.foods.push(new Food(1, "Banan", "foodBanana", 10));
-        this.foods.push(new Food(2, "Truskawka", "foodStrawberry", 5));
-        this.foods.push(new Food(2, "Truskawka", "foodStrawberry", 5));
-        this.foods.push(new Food(3, "Czekolada", "foodChocolate", 5));
-        this.foods.push(new Food(3, "Czekolada", "foodChocolate", 5));
-        this.foods.push(new Food(4, "Ciastko", "foodCookie", 5));
-        this.foods.push(new Food(4, "Ciastko", "foodCookie", 5));
-    
-    */
+
+    //this.foods.push(new Food(1, "Mikstura zdrowia", "healPotion", 30,0,0));
+    /*  this.foods.push(new Food(1, "Banan", "foodBanana", 10));
+      this.foods.push(new Food(2, "Truskawka", "foodStrawberry", 5));
+      this.foods.push(new Food(2, "Truskawka", "foodStrawberry", 5));
+      this.foods.push(new Food(3, "Czekolada", "foodChocolate", 5));
+      this.foods.push(new Food(3, "Czekolada", "foodChocolate", 5));
+      this.foods.push(new Food(4, "Ciastko", "foodCookie", 5));
+      this.foods.push(new Food(4, "Ciastko", "foodCookie", 5));
+  
+  */
 
   }
 
@@ -54,6 +55,7 @@ export class GameComponent implements OnInit {
         this.refreshBars();
         this.creature.draw(document.querySelector('.creature') as HTMLElement);
         this.creature.setSleep(this.creature.getSleep(), false);
+        (document.querySelector('.loadingDiv') as HTMLElement).style.display = "none";
       },
       (err: any) => console.log(err)
     );
@@ -63,7 +65,7 @@ export class GameComponent implements OnInit {
 
 
   ngAfterViewInit() {
-
+    
     /*  if (!this.creature.getSleep())
         window.addEventListener('touchmove', this.process_touchmove, false);*/
     //window.removeEventListener
@@ -135,7 +137,11 @@ export class GameComponent implements OnInit {
       this.creature.addHunger(Number(this.foodToEat.getHungerPoints()));
       this.creature.addHealth(Number(this.foodToEat.getHealthPoints()));
       this.creature.addTiredness(Number(this.foodToEat.getTiredPoints()));
-      this.api.creatureEat(this.foodToEat.getType());
+      this.api.creatureEat(this.foodToEat.getType()).subscribe(
+        (response: any) => {
+          console.log(response);
+        },
+        (err: any) => console.log(err));
     }
     this.refreshBars();
     (document.querySelector('.upperLip') as HTMLElement).style.height = "100%";

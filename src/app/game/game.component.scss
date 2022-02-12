@@ -45,7 +45,7 @@
     width: 30%;
     height: 100%;
 }
-.bar:hover{
+.bar:hover {
     .tooltiptext {
         //display: inline;
         visibility: visible;
@@ -74,13 +74,37 @@
     height: 100vh;
     z-index: 100;
 }
-@keyframes darkenWindow { 
-    0% {opacity: 0%;}
-    100% { opacity: 100%; } 
+.loadingDiv {
+    //opacity: 100%;
+    //pointer-events: none;
+    position: fixed;
+    top: 0%;
+    background-color: $beigeLight;
+    color: $beigeText;
+    width: 100vw;
+    height: 100vh;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: xx-large;
 }
-@keyframes lightenWindow { 
-    0% {opacity: 100%;}
-    100% { opacity: 0%; } 
+@keyframes darkenWindow {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+@keyframes lightenWindow {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
 }
 .tooltiptext {
     //display: none;
